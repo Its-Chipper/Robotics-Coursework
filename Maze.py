@@ -236,12 +236,6 @@ class Chatter:
                 t.angular.z = -0.1 - angle_change
             else:
                 t.angular.z = 0.1 + angle_change
-            if self.Start_bool:
-                if self.blue_pos != None:
-                    t.angular.z = self.blue_pos/300
-                    if(abs(self.blue_pos) < 1):
-                        self.Start_bool = False
-                        break
             self.publisher.publish(t)
             
             spin = self.odometry.pose.pose.orientation

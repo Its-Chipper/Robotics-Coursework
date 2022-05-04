@@ -32,7 +32,6 @@ class Chatter:
         
         self.left_sense = 1000
         self.right_sense = 1000
-        self.Start_bool = False
         self.run_angleCheck = False
         self.red_turn = False
         self.junction = False
@@ -46,8 +45,6 @@ class Chatter:
         if self.run_angleCheck:
             self.Check_walls()
             self.run_angleCheck = False
-        if self.Start_bool:
-            self.Start_Spin()
 
     def laser_cb(self, laser_msg):
         if self.Turnning:
@@ -187,13 +184,6 @@ class Chatter:
 
         cv2.imshow("window", image)
         cv2.waitKey(1)
-    
-    def Start_Spin(self):
-        for i in range(4):
-            self.Turn_X(True, pi/2)
-            if(self.blue_pos != None and self.blue_pos < 0):
-                break
-        self.Start_bool = False
     
     def Check_walls(self):
         clear_walls = [0,0]
